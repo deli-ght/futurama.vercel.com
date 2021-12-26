@@ -1,3 +1,4 @@
+import { css } from "@emotion/react"
 import styled from "@emotion/styled"
 import { useState } from "react"
 import { Episodes } from "../../types"
@@ -16,22 +17,25 @@ export default function EpiList({ data }: Data): JSX.Element {
 
   const selectEpi = (epi: string) => {
     setEpinum(epi)
+    setShow(!show)
   }
 
   return (
     <>
-      <article>
-        <button onClick={showSelect}>{epinum}</button>
-        <ul>
+      <EpiSelection>
+        <EpiSelect onClick={showSelect}>{epinum}</EpiSelect>
+        <EpiLists display={show}>
           {data.map((dataname: Episodes) => {
             const { number, id } = dataname
             return (
               <li key={id}>
-                <button onClick={(e) => selectEpi(number)}>{number}</button>
+                <Epibtn onClick={(e) => selectEpi(number)}>{number}</Epibtn>
               </li>
             )
           })}
-        </ul>
+        </EpiLists>
+      </EpiSelection>
+      <Episode>
         {data
           .filter((e) => e.number == epinum)
           .map((e) => {
@@ -44,7 +48,58 @@ export default function EpiList({ data }: Data): JSX.Element {
               </article>
             )
           })}
-      </article>
+      </Episode>
     </>
   )
 }
+
+const EpiSelection = styled.article`
+  position: absolute;
+`
+
+const EpiSelect = styled.button`
+  width: 200px;
+  height: 40px;
+  font-size: 20px;
+  background: #34aeac;
+  color: white;
+  border-radius: 20px;
+`
+type displayProps = {
+  display: boolean
+}
+
+const epiprops = (props: displayProps) => css`
+  display: ${props.display ? "block" : "none"};
+`
+const EpiLists = styled.ul`
+  ${epiprops}
+  position : absolute;
+  top: 50px;
+  left: 0;
+  padding: 0;
+  width: 200px;
+  height: 300px;
+  overflow: auto;
+  background: white;
+`
+
+const Epibtn = styled.button`
+  width: 100%;
+  margin-bottom: 5px;
+  padding: 3px;
+  background: transparent;
+  font-size: 18px;
+  &:hover,
+  &:focus {
+    background: #34aeac;
+    color: white;
+  }
+`
+
+const Episode = styled.article`
+  display: block;
+  margin: 60px;
+  padding: 30px;
+  background: white;
+`
