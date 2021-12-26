@@ -1,5 +1,7 @@
+import React from "react"
 import { useData } from "../hooks/useData"
 import { Error, Loading } from "./index"
+import styled from "@emotion/styled"
 
 import CastList from "../components/cast/CastList"
 import CharList from "../components/characters/CharList"
@@ -16,7 +18,7 @@ interface DataName {
   dataname: string
 }
 
-function DataList({ dataname }: DataName) {
+function DataList({ dataname }: DataName): JSX.Element {
   const { data, error } = useData(dataname)
 
   if (error) return <Error />
@@ -33,10 +35,22 @@ function DataList({ dataname }: DataName) {
 
   return (
     <main>
-      <h1>{dataname}</h1>
-      {SITE[dataname]}
+      <Header>{dataname}</Header>
+      <FlexCenter>{SITE[dataname]}</FlexCenter>
     </main>
   )
 }
 
 export default DataList
+
+const FlexCenter = styled.article`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+`
+
+const Header = styled.h1`
+  font-size: 32px;
+  margin: 20px;
+  color: #34aeac;
+`
