@@ -5,7 +5,7 @@ interface Data {
   data: Array<Characters>
 }
 
-export default function CharList({ data }: Data) {
+export default function CharList({ data }: Data): JSX.Element {
   return (
     <>
       {data.map((dataname: Characters) => {

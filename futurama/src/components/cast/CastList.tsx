@@ -5,7 +5,7 @@ interface Data {
   data: Array<Cast>
 }
 
-export default function CastList({ data }: Data) {
+export default function CastList({ data }: Data): JSX.Element {
   return (
     <>
       {data.map((dataname: Cast) => {
