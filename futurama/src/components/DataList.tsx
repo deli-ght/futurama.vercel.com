@@ -50,7 +50,13 @@ const FlexCenter = styled.article`
 `
 
 const Header = styled.h1`
-  font-size: 32px;
+  font-size: 72px;
   margin: 20px;
-  color: #34aeac;
+  background: -webkit-linear-gradient(
+    right,
+    rgba(165, 170, 218, 1) 70%,
+    rgba(52, 174, 172, 1) 100%
+  );
+  background-clip: text;
+  text-fill-color: transparent;
 `

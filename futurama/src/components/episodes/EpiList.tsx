@@ -2,6 +2,7 @@ import { css } from "@emotion/react"
 import styled from "@emotion/styled"
 import { useState } from "react"
 import { Episodes } from "../../types"
+import Episode from "./Episode"
 
 interface Data {
   data: Array<Episodes>
@@ -35,26 +36,14 @@ export default function EpiList({ data }: Data): JSX.Element {
           })}
         </EpiLists>
       </EpiSelection>
-      <Episode>
-        {data
-          .filter((e) => e.number == epinum)
-          .map((e) => {
-            return (
-              <article key={e.id}>
-                <h2> {e.title}</h2>
-                <h3>{e.writers}</h3>
-                <p>{e.originalAirDate}</p>
-                <p>{e.desc}</p>
-              </article>
-            )
-          })}
-      </Episode>
+      <Episode data={data} epinum={epinum}></Episode>
     </>
   )
 }
 
 const EpiSelection = styled.article`
   position: absolute;
+  z-index: 100;
 `
 
 const EpiSelect = styled.button`
@@ -82,6 +71,7 @@ const EpiLists = styled.ul`
   height: 300px;
   overflow: auto;
   background: white;
+  border: 2px solid rgba(165, 170, 218, 1);
 `
 
 const Epibtn = styled.button`
@@ -92,14 +82,6 @@ const Epibtn = styled.button`
   font-size: 18px;
   &:hover,
   &:focus {
-    background: #34aeac;
-    color: white;
+    background: rgba(165, 170, 218, 0.3);
   }
-`
-
-const Episode = styled.article`
-  display: block;
-  margin: 60px;
-  padding: 30px;
-  background: white;
 `
