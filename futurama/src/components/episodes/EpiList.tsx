@@ -30,7 +30,7 @@ export default function EpiList({ data }: Data): JSX.Element {
             const { number, id } = dataname
             return (
               <li key={id}>
-                <Epibtn onClick={(e) => selectEpi(number)}>{number}</Epibtn>
+                <Epibtn onClick={() => selectEpi(number)}>{number}</Epibtn>
               </li>
             )
           })}

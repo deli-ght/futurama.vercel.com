@@ -18,6 +18,11 @@ a {
   box-sizing: border-box;
 }
 
+*::selection {
+  background: #a5aada;
+  color: white;
+}
+
 ul {
   list-style: none;
 }

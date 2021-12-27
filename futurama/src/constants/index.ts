@@ -36,4 +36,5 @@ export const ROUTES = [
 export const COLOR: ColorType = {
   purple: "#a5aada",
   mint: "#34aeac",
+  red: "#aa1631",
 }

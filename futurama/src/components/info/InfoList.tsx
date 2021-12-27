@@ -74,8 +74,4 @@ const YearAired = styled.div`
 const Synopsis = styled.p`
   padding: 30px;
   line-height: 20px;
-  &::selection {
-    background: #a5aada;
-    color: white;
-  }
 `
