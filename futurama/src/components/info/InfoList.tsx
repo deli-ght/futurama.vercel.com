@@ -13,7 +13,7 @@ export default function InfoList({ data }: Data): JSX.Element {
       <iframe
         width="560"
         height="315"
-        src="https://www.youtube.com/embed/QRk1s5Kf3aQ?autoplay=1"
+        src="https://www.youtube.com/embed/QRk1s5Kf3aQ"
         title="YouTube video player"
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -64,16 +64,18 @@ const NameLink = styled.a`
 `
 
 const YearAired = styled.div`
-  width: 200px;
   text-align: center;
-  background: rgba(165, 170, 218, 1);
   margin-top: 10px;
   padding: 10px;
-  border-radius: 10px;
+  border-bottom: 1px solid #a5aada;
   font-weight: 600;
 `
 
 const Synopsis = styled.p`
   padding: 30px;
   line-height: 20px;
+  &::selection {
+    background: #a5aada;
+    color: white;
+  }
 `
