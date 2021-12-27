@@ -24,41 +24,35 @@ export default function QuestQna({
   next,
   score,
 }: Data): JSX.Element {
+  let q = data.filter((e: Questions) => e.id === qnum)[0]
+  const { question, possibleAnswers, correctAnswer, id } = q
+
   return (
     <>
-      {data
-        .filter((e: Questions) => e.id === qnum)
-        .map((q: Questions) => {
-          const { question, possibleAnswers, correctAnswer, id } = q
+      <Qtitle>{question}</Qtitle>
+      <ul>
+        {possibleAnswers.map((e: string, idx: number) => {
           return (
-            <QuestContainer key={id}>
-              <Qtitle>{question}</Qtitle>
-              <ul>
-                {possibleAnswers.map((e: string, idx: number) => {
-                  return (
-                    <QuestNum key={`${id}-${e}`}>
-                      <Qcheck
-                        type="radio"
-                        value={e}
-                        name={`${id}`}
-                        id={`${id}-${e}`}
-                        checked={answers[id - 1] == e}
-                        onChange={() => click(id, e)}
-                      />
-                      <Qlabel htmlFor={`${id}-${e}`}>{e}</Qlabel>
-                    </QuestNum>
-                  )
-                })}
-              </ul>
-              {qnum > 1 && <PrevBtn onClick={prev}></PrevBtn>}
-              {qnum < datalen ? (
-                <NextBtn onClick={next}></NextBtn>
-              ) : (
-                <SubmitBtn onClick={score}>finish</SubmitBtn>
-              )}
-            </QuestContainer>
+            <QuestNum key={`${id}-${e}`}>
+              <Qcheck
+                type="radio"
+                value={e}
+                name={`${id}`}
+                id={`${id}-${e}`}
+                checked={answers[id - 1] == e}
+                onChange={() => click(id, e)}
+              />
+              <Qlabel htmlFor={`${id}-${e}`}>{e}</Qlabel>
+            </QuestNum>
           )
         })}
+      </ul>
+      {qnum > 1 && <PrevBtn onClick={prev}></PrevBtn>}
+      {qnum < datalen ? (
+        <NextBtn onClick={next}></NextBtn>
+      ) : (
+        <SubmitBtn onClick={score}>finish</SubmitBtn>
+      )}
     </>
   )
 }
@@ -67,17 +61,7 @@ const Qtitle = styled.h1`
   color: ${COLOR.red};
   margin-bottom: 20px;
 `
-const QuestContainer = styled.div`
-  display: flex;
-  position: relative;
-  flex-direction: column;
-  width: 90%;
-  padding: 50px;
-  background: #ffffff;
-  margin: 20px;
-  border: 1px solid ${COLOR.purple};
-  border-radius: 30px;
-`
+
 const QuestNum = styled.div`
   margin: 10px;
 `
