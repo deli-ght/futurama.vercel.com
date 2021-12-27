@@ -1,1 +1,2 @@
-export const Error = () => <div>FAIL TO LOAD</div>
+import Image from "next/image"
+export const Error = () => <Image src="/Error.gif" layout="fill" />
