@@ -50,11 +50,12 @@ const FlexCenter = styled.article`
 `
 
 const Header = styled.h1`
+  display: inline-block;
   font-size: 72px;
   margin: 20px;
   background: -webkit-linear-gradient(
     right,
-    rgba(165, 170, 218, 1) 70%,
+    rgba(165, 170, 218, 1) 0%,
     rgba(52, 174, 172, 1) 100%
   );
   background-clip: text;
