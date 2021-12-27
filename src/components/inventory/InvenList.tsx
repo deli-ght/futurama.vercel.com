@@ -1,6 +1,6 @@
 import { css } from "@emotion/react"
 import styled from "@emotion/styled"
-import { useRef, useState } from "react"
+import { useState } from "react"
 import { Inventory } from "../../types"
 import { COLOR } from "../../constants"
 interface Data {
