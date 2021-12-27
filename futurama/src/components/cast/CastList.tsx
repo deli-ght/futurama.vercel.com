@@ -9,13 +9,14 @@ export default function CastList({ data }: Data): JSX.Element {
   return (
     <>
       {data.map((dataname: Cast) => {
+        const { id, name, born, died, bio } = dataname
         return (
-          <CastContainer key={dataname.id}>
-            <Name>{dataname.name} </Name>
+          <CastContainer key={id}>
+            <Name>{name} </Name>
             <div>
-              {dataname.born} - {dataname.died == "" ? "alive" : dataname.died}
+              {born} - {died == "" ? "alive" : died}
             </div>
-            <Bio href={dataname.bio.url}>check more</Bio>
+            <Bio href={bio.url}>check more</Bio>
           </CastContainer>
         )
       })}
