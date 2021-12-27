@@ -10,6 +10,7 @@ interface Data {
 
 export default function QuestList({ data }: Data): JSX.Element {
   const score = useRef<number>(0)
+  const showScore = useRef<boolean>(false)
   const dataLen = data.length
   const [answers, setAnswers] = useState<Array<string>>(new Array(dataLen))
   const [qnum, setQnum] = useState<number>(1)
@@ -25,6 +26,13 @@ export default function QuestList({ data }: Data): JSX.Element {
 
   const MoveNext = () => {
     setQnum(qnum + 1)
+  }
+
+  const GetScore = () => {
+    answers.forEach((el: string, idx: number) => {
+      if (data[idx].correctAnswer == el) score.current += 1
+    })
+    showScore.current = true
   }
   return (
     <>
@@ -56,7 +64,7 @@ export default function QuestList({ data }: Data): JSX.Element {
               {qnum < dataLen ? (
                 <NextBtn onClick={MoveNext}></NextBtn>
               ) : (
-                <SubmitBtn>finish</SubmitBtn>
+                <SubmitBtn onClick={GetScore}>finish</SubmitBtn>
               )}
             </QuestContainer>
           )
