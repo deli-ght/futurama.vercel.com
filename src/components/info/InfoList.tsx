@@ -1,4 +1,3 @@
-import { css } from "@emotion/react"
 import styled from "@emotion/styled"
 import { Info } from "../../types"
 import Link from "next/link"
@@ -8,6 +7,9 @@ interface Data {
 }
 
 export default function InfoList({ data }: Data): JSX.Element {
+  const infodata = data[0]
+  const { creators, synopsis, yearsAired, id } = infodata
+
   return (
     <>
       <iframe
@@ -20,25 +22,18 @@ export default function InfoList({ data }: Data): JSX.Element {
         allowFullScreen
       ></iframe>
       <Infomation>
-        {data.map((infodata: Info) => {
-          const { creators, synopsis, yearsAired, id } = infodata
-          return (
-            <>
-              <Creators>
-                Made by.
-                {creators.map((e) => {
-                  return (
-                    <Link key={id} href={e.url} passHref>
-                      <NameLink>{e.name}</NameLink>
-                    </Link>
-                  )
-                })}
-              </Creators>
-              <YearAired>{yearsAired}</YearAired>
-              <Synopsis>{synopsis}</Synopsis>
-            </>
-          )
-        })}
+        <Creators>
+          Made by.
+          {creators.map((e: { name: string; url: string }) => {
+            return (
+              <Link key={id} href={e.url} passHref>
+                <NameLink>{e.name}</NameLink>
+              </Link>
+            )
+          })}
+        </Creators>
+        <YearAired>{yearsAired}</YearAired>
+        <Synopsis>{synopsis}</Synopsis>
       </Infomation>
     </>
   )
