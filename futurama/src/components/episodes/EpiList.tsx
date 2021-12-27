@@ -1,6 +1,7 @@
 import { css } from "@emotion/react"
 import styled from "@emotion/styled"
 import { useState } from "react"
+import { COLOR } from "../../constants"
 import { Episodes } from "../../types"
 import Episode from "./Episode"
 
@@ -36,7 +37,9 @@ export default function EpiList({ data }: Data): JSX.Element {
           })}
         </EpiLists>
       </EpiSelection>
-      <Episode data={data} epinum={epinum}></Episode>
+      {epinum == "choose epicode" || (
+        <Episode data={data} epinum={epinum}></Episode>
+      )}
     </>
   )
 }
@@ -50,7 +53,7 @@ const EpiSelect = styled.button`
   width: 200px;
   height: 40px;
   font-size: 20px;
-  background: #34aeac;
+  background: ${COLOR.mint};
   color: white;
   border-radius: 20px;
 `
@@ -71,7 +74,7 @@ const EpiLists = styled.ul`
   height: 300px;
   overflow: auto;
   background: white;
-  border: 2px solid rgba(165, 170, 218, 1);
+  border: 2px solid ${COLOR.purple};
 `
 
 const Epibtn = styled.button`
