@@ -7,8 +7,8 @@ type ColorType = {
 export const ROUTES = [
   {
     ID: 0,
-    PATH: "/cast",
-    LABEL: "CAST",
+    PATH: "/info",
+    LABEL: "INFO",
   },
   { ID: 1, PATH: "/characters", LABEL: "CHARACTERS" },
   {
@@ -16,20 +16,21 @@ export const ROUTES = [
     PATH: "/episodes",
     LABEL: "EPISODES",
   },
+
   {
     ID: 3,
-    PATH: "/info",
-    LABEL: "INFO",
-  },
-  {
-    ID: 4,
     PATH: "/inventory",
     LABEL: "INVENTORY",
   },
   {
-    ID: 5,
+    ID: 4,
     PATH: "/questions",
     LABEL: "QUESTIONS",
+  },
+  {
+    ID: 5,
+    PATH: "/cast",
+    LABEL: "CAST",
   },
 ]
 export const COLOR: ColorType = {

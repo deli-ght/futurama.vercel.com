@@ -58,6 +58,7 @@ const Navlists = styled.ul`
 
 const Navlist = styled.li`
   display: inline-block;
+  width: 100px;
   & + & {
     margin-left: 10px;
   }
