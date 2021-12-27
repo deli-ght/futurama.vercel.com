@@ -1,1 +1,3 @@
-export const Loading = () => <div>LOADING</div>
+import Image from "next/image"
+
+export const Loading = () => <Image src="/loading" />
