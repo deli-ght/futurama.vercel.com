@@ -10,7 +10,7 @@ interface Data {
   answers: Array<string>
   click: (id: number, value: string) => void
   prev: () => void
-  next: () => void
+  next: (id: number) => void
   score: () => void
 }
 
@@ -49,7 +49,7 @@ export default function QuestQna({
       </ul>
       {qnum > 1 && <PrevBtn onClick={prev}></PrevBtn>}
       {qnum < datalen ? (
-        <NextBtn onClick={next}></NextBtn>
+        <NextBtn onClick={() => next(id)}></NextBtn>
       ) : (
         <SubmitBtn onClick={score}>finish</SubmitBtn>
       )}

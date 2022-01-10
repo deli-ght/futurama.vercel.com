@@ -26,8 +26,12 @@ export default function QuestList({ data }: Data): JSX.Element {
     setQnum(qnum - 1)
   }
 
-  const MoveNext = () => {
-    setQnum(qnum + 1)
+  const MoveNext = (id: number) => {
+    if (answers[id - 1] != "") {
+      setQnum(qnum + 1)
+    } else {
+      alert("답을 선택해주세요 :(")
+    }
   }
 
   const GetScore = () => {
