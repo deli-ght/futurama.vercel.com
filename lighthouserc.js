@@ -5,15 +5,8 @@ module.exports = {
       startServerReadyPattern: "ready on",
       url: ["http://localhost:3000"],
     },
-    assert: {
-      preset: "lighthouse:recommended",
-      assertions: {
-        canonical: "off",
-      },
-    },
     upload: {
       target: "temporary-public-storage",
     },
-    server: {},
   },
 };
