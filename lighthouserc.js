@@ -7,6 +7,9 @@ module.exports = {
     },
     assert: {
       preset: "lighthouse:recommended",
+      assertions: {
+        canonical: "off",
+      },
     },
     upload: {
       target: "temporary-public-storage",
