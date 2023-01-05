@@ -1,12 +1,12 @@
-import Link from "next/link"
-import { ROUTES } from "../../constants"
-import styled from "@emotion/styled"
-import { css } from "@emotion/react"
+import Link from "next/link";
+import { ROUTES } from "../../constants";
+import styled from "@emotion/styled";
+import { css } from "@emotion/react";
 
 interface ROUTE {
-  ID: number
-  PATH: string
-  LABEL: string
+  ID: number;
+  PATH: string;
+  LABEL: string;
 }
 
 export const Navigation = () => {
@@ -21,40 +21,40 @@ export const Navigation = () => {
             return (
               <Navlist key={routeObject.ID}>
                 <Link href={routeObject.PATH}>
-                  <a>{routeObject.LABEL}</a>
+                  <LinkButton>{routeObject.LABEL}</LinkButton>
                 </Link>
               </Navlist>
-            )
+            );
           })}
         </Navlists>
       </nav>
     </Title>
-  )
-}
+  );
+};
 
 const Title = styled.div`
   text-align: center;
-`
+`;
 type logo = {
-  background: string
-}
+  background: string;
+};
 
 const logoimg = (props: logo) => css`
   background-image: url(${props.background});
   background-position: center center;
   background-size: contain;
   background-repeat: no-repeat;
-`
+`;
 
 const LogoImg = styled.a`
   ${logoimg}
   display: inline-block;
   width: 160px;
   height: 100px;
-`
+`;
 const Navlists = styled.ul`
   margin: 10px;
-`
+`;
 
 const Navlist = styled.li`
   display: inline-block;
@@ -62,4 +62,12 @@ const Navlist = styled.li`
   & + & {
     margin-left: 10px;
   }
-`
+`;
+
+const LinkButton = styled.a`
+  display: inline-block;
+  line-height: 3;
+  min-width: 48px;
+  height: 48px;
+  cursor: pointer;
+`;
